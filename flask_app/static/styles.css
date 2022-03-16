@@ -1,0 +1,40 @@
+.form-row{
+    display: flex;
+    justify-content: center;
+}
+
+.reg-form, .login-form{
+    border: 2px solid black;
+    padding: 20px;
+    background-color: silver;
+    margin: 20px;
+    height: fit-content;
+}
+
+.reg-form h1{
+    color: #28a745;
+}
+
+.login-form h1{
+    color: #007bff;
+}
+
+.btn a{
+    color: whitesmoke;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0px 10%;
+}
+
+.container-fluid{
+    padding: 0px 10%;
+}
+
+.read-box{
+    border: 2px solid black;
+    padding: 20px;
+}
