@@ -1,7 +1,8 @@
+from unittest import result
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 # if many to many or one to many relationship, may need to import other model
-# from flask_app.models import recipe
+from flask_app.models import recipe
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 # insert name of schema
@@ -52,6 +53,15 @@ class User:
         if len(results) < 1:
             return False
         return cls(results[0])
+
+    @classmethod
+    def get_recipes(cls, data):
+        query = "SELECT * FROM recipes WHERE user_id = %(id)s;"
+        results= connectToMySQL(db).query_db(query, data)
+        all_recipes = []
+        for row in results:
+            all_recipes.append( recipe.Recipe(row) )
+        return all_recipes
 
     # update
     @classmethod
